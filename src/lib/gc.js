@@ -18,6 +18,7 @@
     var rootsCount = 0;
     var startingState = { roots: [] };
 
+    // "impress"
     var libraryFactory = function( rootId ) {
         if ( roots[ rootId ] ) {
             return roots[ rootId ];
@@ -104,6 +105,7 @@
     // Let impress core know about the existence of this library
     window.impress.addLibraryFactory( { gc: libraryFactory } );
 
+    // 记录状态
     // CORE INIT
     // The library factory (gc(rootId)) is called at the beginning of impress(rootId).init()
     // For the purposes of teardown(), we can use this as an opportunity to save the state
@@ -150,7 +152,7 @@
         }
     };
 
-    // CORE TEARDOWN
+    // 重置状态：CORE TEARDOWN
     var resetStartingState = function( rootId ) {
 
         // Reset body element
